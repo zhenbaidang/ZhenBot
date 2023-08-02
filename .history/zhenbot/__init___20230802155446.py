@@ -2065,8 +2065,8 @@ class ZhenBot(object):
                                           ) / gn).view(-1).tolist()  # normalized xywh
                         # label format
                         # line = (cls, *xywh, conf) if save_conf else (cls, *xywh)
-                        # xyxy: list [x1, y1, x2, y2] where xy1=top-left, xy2=bottom-right
-                        line = (cls, *xyxy, conf) if save_conf else (cls, *xyxy)
+                        print(xywh)
+                        line = (cls, *xywh, conf) if save_conf else (cls, *xywh)
                         det_results.append(line)
                         # ('%g ' * len(line)).rstrip() % line
                     conf_max_index = torch.tensor(

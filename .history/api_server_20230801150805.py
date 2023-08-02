@@ -121,11 +121,7 @@ def ocr(opt, img_type='file', ret_type='text'):
             result = server.detection(img)
         elif opt == 'slide':
             im, im0 = get_img_for_slide(request)
-            xyxy_result = server.slide_inference(im, im0) # "x1 y1 x2 y2 conf"
-            result_list = xyxy_result.split()
-            # [top-left-x, top-left-y, top-right-x, top-right-y, bottom-left-x, bottom-left-y, bottom-right-x, bottom-right-y, conf]
-            corner_point_result_list = [result_list[i] for i in [0, 1, 2, 1, 0, 3, 2, 3, 4]]
-            result = ' '.join(corner_point_result_list)
+            result = server.slide_inference(im, im0)
             result += f' {im0.shape[0]} {im0.shape[1]}'
         else:
             raise f"<opt={opt}> is invalid"
